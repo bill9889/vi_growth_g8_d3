@@ -31,7 +31,7 @@ d3.csv(csvFile, function(data) {
     .domain(d3.extent(data, function(d) { return d.Period; }))
     .range([ 0, width ]);
     svg.append("g")
-    .attr("transform", "translate(0," + height / 2 + ")")
+    .attr("transform", "translate(0," + 321 + ")")
     .call(d3.axisBottom(x).ticks(21));
 
     // Add Y axis
@@ -82,11 +82,6 @@ d3.csv(csvFile, function(data) {
         .transition()
         .duration(1500)
         .style('fill', 'rgba(255,111,60,0.15)');
-
-    // Adding the x Axis
-    svg.append("g")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
 
     // Adding the y Axis
     svg.append("g")
