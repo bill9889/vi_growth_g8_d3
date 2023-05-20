@@ -35,10 +35,15 @@ d3.csv(csvFile, function(data) {
         .key(function(d) { return d.Country;})
         .entries(data);
 
+    console.log(sumstat)
+
     // Add X axis 
     var x = d3.scaleLinear()
         .domain(d3.extent(data, function(d) { return d.Period; }))
         .range([ 0, width]);
+
+
+    console.log(x)
 
     svg.append("g")
         .attr("transform", "translate(0," + height / 2 + ")")
@@ -92,7 +97,7 @@ d3.csv(csvFile, function(data) {
         .attr("d", function(d){
             return d3.line()
             .x(function(d) { return x(d.Period); })
-            .y(function(d) { return y(+d.GPD); })
+            .y(function(d) { return y(d.GPD); })
             (d.values)
         })
         .attr('stroke-width', '2')
@@ -110,9 +115,10 @@ d3.csv(csvFile, function(data) {
             .attr("stroke-dashoffset", 0)
             .delay(0)
             .duration(3000)
-            .on("end", () => setTimeout(repeat, 1000));
+            .on("end", () => setTimeout(repeat, 500));
     };
 
+    // Run the first time
     repeat()
 
     svg2.selectAll("mydots")
